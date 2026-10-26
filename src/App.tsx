@@ -1,4 +1,4 @@
-import { ArrowDownRight, ArrowUpRight, Github } from "lucide-react";
+import { ArrowDownRight, ArrowLeft, ArrowUpRight, Github } from "lucide-react";
 import { AgingChart, BillingChart, DsoChart, SegmentChart } from "./components/Charts";
 import { Worklist } from "./components/Worklist";
 import { AS_OF, customers, monthly, totals } from "./lib/ar";
@@ -69,8 +69,8 @@ export default function App() {
             <a href={REPO} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm border border-zinc-200 rounded-full px-4 py-2 text-zinc-700 hover:border-zinc-400 transition-colors">
               <Github className="w-4 h-4" /> Code
             </a>
-            <a href={SITE} className="inline-flex items-center gap-1 text-sm bg-zinc-900 text-white rounded-full px-4 py-2 hover:bg-zinc-700 transition-colors">
-              Amila Dewapriya <ArrowUpRight className="w-4 h-4" />
+            <a href={SITE} className="inline-flex items-center gap-1.5 text-sm bg-zinc-900 text-white rounded-full px-4 py-2 hover:bg-zinc-700 transition-colors">
+              <ArrowLeft className="w-4 h-4" /> Portfolio
             </a>
           </div>
         </div>
