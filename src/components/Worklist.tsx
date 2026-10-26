@@ -1,8 +1,8 @@
 import { ChevronDown, ChevronRight, Search } from "lucide-react";
 import { Fragment, useMemo, useState } from "react";
-import { BUCKETS, customerRows, managers, openInvoices, segments, type CustomerRow, type Priority } from "../lib/ar";
+import { BUCKETS, useAnalysis, type CustomerRow, type Priority } from "../lib/ar";
 import { BUCKET_COLORS } from "../lib/colors";
-import { date, pct, usd } from "../lib/format";
+import { date, money, pct } from "../lib/format";
 
 const PRIORITY_STYLE: Record<Priority, string> = {
   High: "bg-red-50 text-red-700 ring-red-200",
@@ -20,7 +20,7 @@ const select = "bg-white border border-zinc-200 rounded-lg px-3 py-2 text-sm tex
 function AgingStrip({ row }: { row: CustomerRow }) {
   if (row.balance <= 0) return <span className="text-zinc-400 text-xs">—</span>;
   return (
-    <div className="flex h-2 w-28 rounded-full overflow-hidden bg-zinc-100 gap-px" title={BUCKETS.map((b) => `${b}: ${usd(row.buckets[b])}`).join("\n")}>
+    <div className="flex h-2 w-28 rounded-full overflow-hidden bg-zinc-100 gap-px" title={BUCKETS.map((b) => `${b}: ${money(row.buckets[b])}`).join("\n")}>
       {BUCKETS.map((b, i) =>
         row.buckets[b] > 0 ? <div key={b} style={{ width: `${(row.buckets[b] / row.balance) * 100}%`, background: BUCKET_COLORS[i] }} /> : null
       )}
@@ -29,6 +29,8 @@ function AgingStrip({ row }: { row: CustomerRow }) {
 }
 
 export function Worklist() {
+  const { customerRows, managers, segments, hasLimits, hasRatings } = useAnalysis();
+  const columns = 9 + (hasLimits ? 1 : 0) + (hasRatings ? 1 : 0) + (managers.length > 0 ? 1 : 0);
   const [query, setQuery] = useState("");
   const [segment, setSegment] = useState("All");
   const [manager, setManager] = useState("All");
@@ -47,9 +49,9 @@ export function Worklist() {
     );
     const dir = sort.desc ? -1 : 1;
     return [...filtered].sort((a, b) =>
-      sort.key === "name" ? dir * a.name.localeCompare(b.name) : dir * ((a[sort.key] as number) - (b[sort.key] as number))
+      sort.key === "name" ? dir * a.name.localeCompare(b.name) : dir * (((a[sort.key] as number | null) ?? -1) - ((b[sort.key] as number | null) ?? -1))
     );
-  }, [query, segment, manager, priority, sort]);
+  }, [customerRows, query, segment, manager, priority, sort]);
 
   const totalOverdue = rows.reduce((s, r) => s + r.overdue, 0);
 
@@ -77,11 +79,11 @@ export function Worklist() {
           </div>
           <p className="text-sm text-zinc-500">
             <span className="font-medium text-zinc-900">{rows.length}</span> customers ·{" "}
-            <span className="font-medium text-zinc-900">{usd(totalOverdue)}</span> overdue
+            <span className="font-medium text-zinc-900">{money(totalOverdue)}</span> overdue
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-2 mt-4">
+        <div className="flex flex-wrap gap-2 mt-4 print:hidden">
           <label className="relative flex-1 min-w-48">
             <Search className="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
@@ -98,19 +100,23 @@ export function Worklist() {
             <option value="Low">Low priority</option>
             <option value="All">All customers</option>
           </select>
-          <select value={segment} onChange={(e) => setSegment(e.target.value)} className={select} aria-label="Segment">
-            <option value="All">All segments</option>
-            {segments.map((s) => <option key={s}>{s}</option>)}
-          </select>
-          <select value={manager} onChange={(e) => setManager(e.target.value)} className={select} aria-label="Account manager">
-            <option value="All">All account managers</option>
-            {managers.map((m) => <option key={m}>{m}</option>)}
-          </select>
+          {segments.length > 1 && (
+            <select value={segment} onChange={(e) => setSegment(e.target.value)} className={select} aria-label="Segment">
+              <option value="All">All segments</option>
+              {segments.map((s) => <option key={s}>{s}</option>)}
+            </select>
+          )}
+          {managers.length > 1 && (
+            <select value={manager} onChange={(e) => setManager(e.target.value)} className={select} aria-label="Account manager">
+              <option value="All">All account managers</option>
+              {managers.map((m) => <option key={m}>{m}</option>)}
+            </select>
+          )}
         </div>
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm whitespace-nowrap">
+      <div className="overflow-x-auto print:overflow-visible">
+        <table className="w-full text-sm whitespace-nowrap print:text-[9px] print:whitespace-normal">
           <thead className="text-xs text-zinc-500 border-y border-zinc-200 bg-zinc-50/60">
             <tr>
               <th className="pl-5 md:pl-6 pr-1 py-3" />
@@ -121,10 +127,10 @@ export function Worklist() {
               <Th k="overdue" right>Overdue</Th>
               <Th k="over90" right>90+ days</Th>
               <th className="px-3 py-3 text-left font-medium">Aging</th>
-              <Th k="utilisation" right>Credit used</Th>
-              <th className="px-3 py-3 text-center font-medium">Rating</th>
+              {hasLimits && <Th k="utilisation" right>Credit used</Th>}
+              {hasRatings && <th className="px-3 py-3 text-center font-medium">Rating</th>}
               <th className="px-3 py-3 text-left font-medium">Last paid</th>
-              <th className="px-3 pr-6 py-3 text-left font-medium">Manager</th>
+              {managers.length > 0 && <th className="px-3 pr-6 py-3 text-left font-medium">Manager</th>}
             </tr>
           </thead>
           <tbody className="divide-y divide-zinc-100">
@@ -138,7 +144,7 @@ export function Worklist() {
                     </td>
                     <td className="px-3 py-3">
                       <p className="font-medium text-zinc-900">{r.name}</p>
-                      <p className="text-xs text-zinc-500">{r.id} · {r.segment}</p>
+                      <p className="text-xs text-zinc-500">{[r.id !== r.name && r.id, r.segment].filter(Boolean).join(" · ")}</p>
                     </td>
                     <td className="px-3 py-3">
                       <span className={`inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full ring-1 ${PRIORITY_STYLE[r.priority]}`}>
@@ -147,20 +153,22 @@ export function Worklist() {
                       </span>
                     </td>
                     <td className="px-3 py-3 text-zinc-700">{r.action}</td>
-                    <td className="px-3 py-3 text-right tabular-nums text-zinc-900">{usd(r.balance)}</td>
-                    <td className="px-3 py-3 text-right tabular-nums text-zinc-900">{usd(r.overdue)}</td>
-                    <td className="px-3 py-3 text-right tabular-nums text-zinc-900">{r.over90 > 0 ? usd(r.over90) : <span className="text-zinc-400">—</span>}</td>
+                    <td className="px-3 py-3 text-right tabular-nums text-zinc-900">{money(r.balance)}</td>
+                    <td className="px-3 py-3 text-right tabular-nums text-zinc-900">{money(r.overdue)}</td>
+                    <td className="px-3 py-3 text-right tabular-nums text-zinc-900">{r.over90 > 0 ? money(r.over90) : <span className="text-zinc-400">—</span>}</td>
                     <td className="px-3 py-3"><AgingStrip row={r} /></td>
-                    <td className={`px-3 py-3 text-right tabular-nums ${r.utilisation > 1 ? "text-red-700 font-medium" : "text-zinc-700"}`}>
-                      {pct(r.utilisation * 100)}{r.utilisation > 1 && " ⚠"}
-                    </td>
-                    <td className="px-3 py-3 text-center font-mono text-xs text-zinc-700">{r.rating}</td>
+                    {hasLimits && (
+                      <td className={`px-3 py-3 text-right tabular-nums ${r.utilisation !== null && r.utilisation > 1 ? "text-red-700 font-medium" : "text-zinc-700"}`}>
+                        {r.utilisation === null ? <span className="text-zinc-400">—</span> : <>{pct(r.utilisation * 100)}{r.utilisation > 1 && " ⚠"}</>}
+                      </td>
+                    )}
+                    {hasRatings && <td className="px-3 py-3 text-center font-mono text-xs text-zinc-700">{r.rating || "—"}</td>}
                     <td className="px-3 py-3 text-zinc-600">{date(r.lastPayment)}</td>
-                    <td className="px-3 pr-6 py-3 text-zinc-600">{r.manager}</td>
+                    {managers.length > 0 && <td className="px-3 pr-6 py-3 text-zinc-600">{r.manager || "—"}</td>}
                   </tr>
                   {isOpen && (
                     <tr className="bg-zinc-50">
-                      <td colSpan={12} className="px-5 md:px-6 pb-5 pt-1">
+                      <td colSpan={columns} className="px-5 md:px-6 pb-5 pt-1">
                         <CustomerDetail row={r} />
                       </td>
                     </tr>
@@ -170,7 +178,7 @@ export function Worklist() {
             })}
             {rows.length === 0 && (
               <tr>
-                <td colSpan={12} className="px-6 py-10 text-center text-zinc-500">No customers match these filters.</td>
+                <td colSpan={columns} className="px-6 py-10 text-center text-zinc-500">No customers match these filters.</td>
               </tr>
             )}
           </tbody>
@@ -181,15 +189,21 @@ export function Worklist() {
 }
 
 function CustomerDetail({ row }: { row: CustomerRow }) {
-  const invs = openInvoices.filter((i) => i.customerId === row.id).sort((a, b) => b.daysPastDue - a.daysPastDue);
+  const { openByCustomer, hasServices } = useAnalysis();
+  const invs = [...(openByCustomer.get(row.id) ?? [])].sort((a, b) => b.daysPastDue - a.daysPastDue);
+  const facts: [string, React.ReactNode][] = [
+    ["Terms", row.terms !== null ? `${row.terms} days` : null],
+    ["Credit limit", row.creditLimit ? money(row.creditLimit) : null],
+    ["Country", row.country || null],
+    ["Contact", row.email || null]
+  ];
   return (
     <div className="bg-white border border-zinc-200 rounded-xl p-4 whitespace-normal">
       <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm mb-4">
-        <p><span className="text-zinc-500">Terms</span> <span className="text-zinc-900">{row.terms} days</span></p>
-        <p><span className="text-zinc-500">Credit limit</span> <span className="text-zinc-900">{usd(row.creditLimit)}</span></p>
-        <p><span className="text-zinc-500">Country</span> <span className="text-zinc-900">{row.country}</span></p>
-        <p><span className="text-zinc-500">Contact</span> <span className="text-zinc-900">{row.email}</span></p>
-        {row.disputed > 0 && <p><span className="text-zinc-500">Disputed</span> <span className="text-red-700 font-medium">{usd(row.disputed)}</span></p>}
+        {facts.filter(([, v]) => v).map(([k, v]) => (
+          <p key={k}><span className="text-zinc-500">{k}</span> <span className="text-zinc-900">{v}</span></p>
+        ))}
+        {row.disputed > 0 && <p><span className="text-zinc-500">Disputed</span> <span className="text-red-700 font-medium">{money(row.disputed)}</span></p>}
       </div>
       {invs.length === 0 ? (
         <p className="text-sm text-zinc-500">No open invoices.</p>
@@ -199,7 +213,7 @@ function CustomerDetail({ row }: { row: CustomerRow }) {
             <thead className="text-xs text-zinc-500">
               <tr className="border-b border-zinc-200">
                 <th className="text-left font-medium py-2 pr-4">Invoice</th>
-                <th className="text-left font-medium py-2 pr-4">Service</th>
+                {hasServices && <th className="text-left font-medium py-2 pr-4">Service</th>}
                 <th className="text-left font-medium py-2 pr-4">Invoice date</th>
                 <th className="text-left font-medium py-2 pr-4">Due</th>
                 <th className="text-right font-medium py-2 pr-4">Days past due</th>
@@ -211,14 +225,14 @@ function CustomerDetail({ row }: { row: CustomerRow }) {
               {invs.map((i) => (
                 <tr key={i.no}>
                   <td className="py-2 pr-4 font-mono text-xs text-zinc-700">{i.no}</td>
-                  <td className="py-2 pr-4 text-zinc-700">{i.service}</td>
+                  {hasServices && <td className="py-2 pr-4 text-zinc-700">{i.service}</td>}
                   <td className="py-2 pr-4 text-zinc-600">{date(i.date)}</td>
                   <td className="py-2 pr-4 text-zinc-600">{date(i.due)}</td>
                   <td className={`py-2 pr-4 text-right tabular-nums ${i.daysPastDue > 90 ? "text-red-700 font-medium" : "text-zinc-700"}`}>
                     {i.daysPastDue > 0 ? i.daysPastDue : "Not due"}
                   </td>
-                  <td className="py-2 pr-4 text-right tabular-nums text-zinc-900">{usd(i.outstanding)}</td>
-                  <td className="py-2 text-zinc-700">{i.status}</td>
+                  <td className="py-2 pr-4 text-right tabular-nums text-zinc-900">{money(i.outstanding)}</td>
+                  <td className="py-2 text-zinc-700">{i.disputed ? "Disputed" : i.outstanding < 0 ? "Credit" : i.outstanding < i.amount ? "Partially paid" : "Open"}</td>
                 </tr>
               ))}
             </tbody>

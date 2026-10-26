@@ -10,3 +10,19 @@
     @apply bg-zinc-50 text-zinc-900 antialiased;
   }
 }
+
+/* "PDF report": print the dashboard on landscape A4 pages */
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 10mm;
+  }
+  body {
+    background: white;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .break-inside-avoid {
+    break-inside: avoid;
+  }
+}

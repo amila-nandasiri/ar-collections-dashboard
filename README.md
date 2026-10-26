@@ -19,6 +19,28 @@ Collections work is usually done from an aged-debtors report in Excel. I improve
 - **Receivables by segment:** resorts, tour operators, hotels, corporates and liveaboards
 - **Collections worklist:** every customer ranked by priority with a suggested next action (escalate, resolve dispute, hold credit, call, remind). Filter by segment or account manager, and select a customer to see its open invoices.
 
+## Use it with your own data
+
+Select **Use your data** and drop in exports from your accounting system:
+
+- **Invoices** (required): one row per invoice with customer, invoice date, due date (or payment terms) and amount. Add an outstanding or paid column, and include paid invoices so DSO and trends can be calculated.
+- **Customers** (optional): segment, credit limit, risk rating and account manager
+- **Payments** (optional): payment dates for exact collection history
+
+Excel (`.xlsx`, one sheet per file type) and CSV both work. Column names are matched loosely ("Invoice No", "Document Date" and "Balance Due" are all recognised), and dates can be `2026-09-30`, `30/09/2026`, `30-Sep-2026` or Excel dates. Download the **Excel template** or the CSV templates from the upload panel to get started.
+
+**Privacy:** files are read and analysed entirely in the browser. Nothing is uploaded or stored.
+
+## Reports
+
+- **Excel report** with Summary, Aged debtors and Open invoices sheets
+- **PDF report**: prints the dashboard on landscape A4 pages (use "Save as PDF")
+- **Aged debtors** and **open invoices** as CSV
+
+## Offline version
+
+`npm run build` also produces `dist/ar-collections-dashboard.html`: the whole dashboard, sample data included, in one self-contained file. Download it from the live demo, open it in any browser, and it works without an internet connection.
+
 ## How the numbers work
 
 | Measure | Formula |
@@ -33,7 +55,8 @@ The month-end balances behind DSO and CEI are rebuilt from the invoice and payme
 ## Tech
 
 - **Data:** Python (standard library), in [`scripts/generate_data.py`](scripts/generate_data.py). See [`data/README.md`](data/README.md) for the data dictionary.
-- **App:** React, TypeScript, Recharts and Tailwind CSS, built with Vite. All calculations run in the browser, in [`src/lib/ar.ts`](src/lib/ar.ts).
+- **App:** React, TypeScript, Recharts and Tailwind CSS, built with Vite. Calculations are in [`src/lib/ar.ts`](src/lib/ar.ts) and file import in [`src/lib/dataset.ts`](src/lib/dataset.ts).
+- **Excel:** [read-excel-file](https://www.npmjs.com/package/read-excel-file) and [write-excel-file](https://www.npmjs.com/package/write-excel-file), running in the browser
 - **Hosting:** published on [dewapriya.com](https://dewapriya.com) as part of the portfolio site, whose GitHub Actions deploy builds this repository
 
 ## Run it locally
@@ -41,6 +64,7 @@ The month-end balances behind DSO and CEI are rebuilt from the invoice and payme
 ```bash
 npm install
 npm run dev        # start the dashboard at http://localhost:5173
+npm run build      # hosted build in dist/, plus the single-file offline version
 npm run data       # regenerate the sample data (needs Python 3)
 ```
 
