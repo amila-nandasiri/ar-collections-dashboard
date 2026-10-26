@@ -10,7 +10,7 @@ Fully fictional accounts-receivable data for a seaplane and aviation operator in
 | File | Rows | What it is |
 |---|---|---|
 | `customers.csv` | 100 | Customer master: segment, terms, credit limit, risk rating |
-| `invoices.csv` | ~8,900 | Every invoice, with amount paid and balance outstanding at the snapshot date |
+| `invoices.csv` | ~8,800 | Every invoice, with amount paid and balance outstanding at the snapshot date |
 | `payments.csv` | ~8,500 | Every payment received, linked to an invoice |
 
 ## customers.csv
@@ -57,7 +57,7 @@ Fully fictional accounts-receivable data for a seaplane and aviation operator in
 These patterns let the dashboard tell a real collections story:
 
 - **Seasonality:** billing peaks in the December–April high season and dips from May to October.
-- **Concentration:** luxury resorts make up most of the revenue, and the top 10 customers hold about half of the balance outstanding.
+- **Concentration:** luxury resorts make up most of the revenue, and the top 10 customers hold about 40% of the balance outstanding.
 - **Payment behaviour:** each customer silently follows one of five hidden patterns (prompt, standard, slow, problem or frequent disputer). The risk rating hints at the pattern but doesn't always match, as in real life.
 - **Collections issues:** the data includes part-payments, disputed invoices, a small number of invoices that are never paid, and customers over their credit limit.
 
@@ -65,9 +65,9 @@ These patterns let the dashboard tell a real collections story:
 
 | Measure | Value |
 |---|---|
-| Billing, last 12 months | ≈ $79M |
-| Total outstanding | ≈ $9.6M |
-| DSO | ≈ 44 days |
-| Current (not yet due) | ≈ 52% of the balance |
-| 90+ days overdue | ≈ 10% of the balance |
-| Customers over credit limit | 22 |
+| Billing, last 12 months | ≈ $77M |
+| Total outstanding | ≈ $7.9M |
+| DSO | ≈ 47 days |
+| Current (not yet due) | ≈ 60% of the balance |
+| 90+ days overdue | ≈ 9% of the balance |
+| Customers over credit limit | 13 |

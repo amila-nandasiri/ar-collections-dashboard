@@ -47,11 +47,11 @@ SERVICES = {
 # Payment behaviour: (share of customers, mean days paid after due, std dev,
 # chance an invoice is never paid, chance it's disputed, chance of part-payment)
 PROFILES = {
-    "Prompt":   (0.25, -4, 4, 0.000, 0.00, 0.00),
-    "Standard": (0.35, 6, 8, 0.002, 0.01, 0.03),
-    "Slow":     (0.22, 32, 14, 0.010, 0.03, 0.10),
-    "Problem":  (0.12, 55, 25, 0.060, 0.05, 0.20),
-    "Disputer": (0.06, 20, 12, 0.020, 0.25, 0.05),
+    "Prompt":   (0.35, -4, 4, 0.000, 0.00, 0.00),
+    "Standard": (0.35, -1, 6, 0.002, 0.01, 0.03),
+    "Slow":     (0.15, 22, 12, 0.010, 0.03, 0.10),
+    "Problem":  (0.10, 55, 25, 0.040, 0.05, 0.20),
+    "Disputer": (0.05, 20, 12, 0.020, 0.25, 0.05),
 }
 # Risk rating shown to the user correlates with, but doesn't reveal, the profile
 RATING_ODDS = {

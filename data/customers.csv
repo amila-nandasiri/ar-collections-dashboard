@@ -10,9 +10,9 @@ C008,Turtle Shoal Resort,Luxury Resort,Maldives,Faafu,30,420000,C,Ibrahim Naseem
 C009,Ocean Reef Private Island,Luxury Resort,Maldives,Baa,30,540000,C,Ibrahim Naseem,accounts@oceanreefprivateisland.example,2024-06-12
 C010,Lagoon Lagoon Private Island,Luxury Resort,Maldives,South Malé,45,580000,A,Hana Waheed,accounts@lagoonlagoonprivateislan.example,2019-01-15
 C011,Velvet Shoal Island Resort,Luxury Resort,Maldives,Meemu,30,440000,A,Aisha Rasheed,accounts@velvetshoalislandresort.example,2021-08-27
-C012,Crystal Shoal Resort,Luxury Resort,Maldives,Shaviyani,45,770000,D,Hana Waheed,accounts@crystalshoalresort.example,2021-11-28
+C012,Crystal Shoal Resort,Luxury Resort,Maldives,Shaviyani,45,770000,C,Hana Waheed,accounts@crystalshoalresort.example,2021-11-28
 C013,Velvet Point Island Resort,Luxury Resort,Maldives,Raa,30,220000,D,Aisha Rasheed,accounts@velvetpointislandresort.example,2020-10-20
-C014,Velvet Reef Private Island,Luxury Resort,Maldives,South Malé,30,135000,C,Ibrahim Naseem,accounts@velvetreefprivateisland.example,2018-10-04
+C014,Velvet Reef Private Island,Luxury Resort,Maldives,South Malé,30,135000,B,Ibrahim Naseem,accounts@velvetreefprivateisland.example,2018-10-04
 C015,Serene Atoll Island Resort,Luxury Resort,Maldives,Meemu,45,200000,B,Hana Waheed,accounts@sereneatollislandresort.example,2020-09-10
 C016,Coral Cove Island Resort,Luxury Resort,Maldives,Meemu,45,510000,A,Aisha Rasheed,accounts@coralcoveislandresort.example,2023-09-21
 C017,Whale Cove Beach Retreat,Luxury Resort,Maldives,Dhaalu,30,115000,D,Aisha Rasheed,accounts@whalecovebeachretreat.example,2020-11-14
@@ -20,20 +20,20 @@ C018,Sandbar Atoll Private Island,Luxury Resort,Maldives,Faafu,30,365000,A,Hana 
 C019,Lagoon Isle Island Resort,Luxury Resort,Maldives,Ari (Alifu),30,410000,B,Priya Fernando,accounts@lagoonisleislandresort.example,2018-11-13
 C020,Crystal Haven Island Resort,Luxury Resort,Maldives,Shaviyani,30,420000,A,Hana Waheed,accounts@crystalhavenislandresort.example,2023-09-06
 C021,Moonlit Bay Resort & Spa,Luxury Resort,Maldives,Baa,30,140000,C,Aisha Rasheed,accounts@moonlitbayresortspa.example,2019-06-27
-C022,Pearl Bay Beach Retreat,Luxury Resort,Maldives,North Malé,30,195000,D,Priya Fernando,accounts@pearlbaybeachretreat.example,2020-07-09
+C022,Pearl Bay Beach Retreat,Luxury Resort,Maldives,North Malé,30,195000,C,Priya Fernando,accounts@pearlbaybeachretreat.example,2020-07-09
 C023,Azure Reef Resort & Spa,Luxury Resort,Maldives,Faafu,30,220000,A,Hana Waheed,accounts@azurereefresortspa.example,2024-09-28
 C024,Manta Sands Beach Retreat,Luxury Resort,Maldives,Noonu,30,75000,A,Priya Fernando,accounts@mantasandsbeachretreat.example,2020-10-21
 C025,Sandbar Sands Resort & Spa,Luxury Resort,Maldives,South Malé,30,240000,B,Ibrahim Naseem,accounts@sandbarsandsresortspa.example,2021-08-04
 C026,Crystal Reef Beach Retreat,Luxury Resort,Maldives,Shaviyani,30,230000,B,Ibrahim Naseem,accounts@crystalreefbeachretreat.example,2020-11-10
-C027,Manta Cove Resort,Luxury Resort,Maldives,Noonu,30,390000,C,Ibrahim Naseem,accounts@mantacoveresort.example,2022-04-23
+C027,Manta Cove Resort,Luxury Resort,Maldives,Noonu,30,390000,B,Ibrahim Naseem,accounts@mantacoveresort.example,2022-04-23
 C028,Turtle Cove Resort & Spa,Luxury Resort,Maldives,Meemu,30,245000,A,Mohamed Shifan,accounts@turtlecoveresortspa.example,2018-12-19
-C029,Coral Haven Private Island,Luxury Resort,Maldives,North Malé,30,320000,B,Mohamed Shifan,accounts@coralhavenprivateisland.example,2019-11-22
+C029,Coral Haven Private Island,Luxury Resort,Maldives,North Malé,30,320000,A,Mohamed Shifan,accounts@coralhavenprivateisland.example,2019-11-22
 C030,Coral Cove Beach Retreat,Luxury Resort,Maldives,Raa,30,410000,D,Ibrahim Naseem,accounts@coralcovebeachretreat.example,2018-01-09
 C031,Silver Haven Resort,Luxury Resort,Maldives,Baa,30,360000,D,Aisha Rasheed,accounts@silverhavenresort.example,2021-03-12
-C032,Whale Point Resort & Spa,Luxury Resort,Maldives,Vaavu,30,140000,B,Aisha Rasheed,accounts@whalepointresortspa.example,2019-03-10
+C032,Whale Point Resort & Spa,Luxury Resort,Maldives,Vaavu,30,140000,A,Aisha Rasheed,accounts@whalepointresortspa.example,2019-03-10
 C033,Sapphire Shoal Private Island,Luxury Resort,Maldives,South Malé,30,600000,A,Ibrahim Naseem,accounts@sapphireshoalprivateisla.example,2021-06-05
 C034,Ocean Bay Private Island,Luxury Resort,Maldives,Lhaviyani,30,465000,A,Priya Fernando,accounts@oceanbayprivateisland.example,2023-09-01
-C035,Manta Cove Resort & Spa,Luxury Resort,Maldives,North Malé,30,190000,C,Hana Waheed,accounts@mantacoveresortspa.example,2023-07-19
+C035,Manta Cove Resort & Spa,Luxury Resort,Maldives,North Malé,30,190000,B,Hana Waheed,accounts@mantacoveresortspa.example,2023-07-19
 C036,Palm Reef Resort & Spa,Luxury Resort,Maldives,South Malé,30,745000,B,Mohamed Shifan,accounts@palmreefresortspa.example,2019-03-15
 C037,Turtle Shoal Beach Retreat,Luxury Resort,Maldives,Vaavu,30,210000,A,Priya Fernando,accounts@turtleshoalbeachretreat.example,2018-04-01
 C038,Sandbar Isle Private Island,Luxury Resort,Maldives,Meemu,30,325000,B,Hana Waheed,accounts@sandbarisleprivateisland.example,2021-04-19
@@ -41,15 +41,15 @@ C039,Velvet Isle Resort & Spa,Luxury Resort,Maldives,Dhaalu,30,320000,C,Priya Fe
 C040,Sunrise Point Private Island,Luxury Resort,Maldives,Ari (Alifu),30,425000,A,Hana Waheed,accounts@sunrisepointprivateislan.example,2020-11-20
 C041,Sapphire Atoll Resort,Luxury Resort,Maldives,South Malé,30,295000,C,Ibrahim Naseem,accounts@sapphireatollresort.example,2022-03-19
 C042,Turtle Haven Private Island,Luxury Resort,Maldives,Dhaalu,45,245000,A,Priya Fernando,accounts@turtlehavenprivateisland.example,2017-08-10
-C043,Starfish Sands Resort & Spa,Luxury Resort,Maldives,Meemu,30,360000,C,Ibrahim Naseem,accounts@starfishsandsresortspa.example,2017-01-16
+C043,Starfish Sands Resort & Spa,Luxury Resort,Maldives,Meemu,30,360000,B,Ibrahim Naseem,accounts@starfishsandsresortspa.example,2017-01-16
 C044,Palm Reef Private Island,Luxury Resort,Maldives,Faafu,45,305000,C,Ibrahim Naseem,accounts@palmreefprivateisland.example,2021-05-15
-C045,Azure Reef Island Resort,Luxury Resort,Maldives,Shaviyani,45,190000,C,Aisha Rasheed,accounts@azurereefislandresort.example,2018-12-08
+C045,Azure Reef Island Resort,Luxury Resort,Maldives,Shaviyani,45,190000,B,Aisha Rasheed,accounts@azurereefislandresort.example,2018-12-08
 C046,Tropic Trails Escapes,Tour Operator,Germany,,45,140000,C,Hana Waheed,accounts@tropictrailsescapes.example,2017-07-13
 C047,Kestrel Escapes,Tour Operator,Switzerland,,45,65000,C,Ibrahim Naseem,accounts@kestrelescapes.example,2017-10-16
-C048,Sunbound Journeys,Tour Operator,United Kingdom,,45,95000,B,Mohamed Shifan,accounts@sunboundjourneys.example,2024-12-03
-C049,Oceanic Journeys,Tour Operator,Japan,,60,90000,C,Ibrahim Naseem,accounts@oceanicjourneys.example,2024-06-11
+C048,Sunbound Journeys,Tour Operator,United Kingdom,,45,95000,A,Mohamed Shifan,accounts@sunboundjourneys.example,2024-12-03
+C049,Oceanic Journeys,Tour Operator,Japan,,60,90000,B,Ibrahim Naseem,accounts@oceanicjourneys.example,2024-06-11
 C050,Silk Route Escapes,Tour Operator,India,,45,155000,B,Aisha Rasheed,accounts@silkrouteescapes.example,2018-11-12
-C051,Golden Compass Journeys,Tour Operator,United Arab Emirates,,45,60000,C,Ibrahim Naseem,accounts@goldencompassjourneys.example,2023-08-21
+C051,Golden Compass Journeys,Tour Operator,United Arab Emirates,,45,60000,B,Ibrahim Naseem,accounts@goldencompassjourneys.example,2023-08-21
 C052,Albatross Journeys,Tour Operator,Switzerland,,45,55000,C,Mohamed Shifan,accounts@albatrossjourneys.example,2023-07-22
 C053,Wanderlust Escapes,Tour Operator,Italy,,45,150000,B,Hana Waheed,accounts@wanderlustescapes.example,2017-05-25
 C054,Lighthouse Travel,Tour Operator,Japan,,45,150000,A,Hana Waheed,accounts@lighthousetravel.example,2024-11-04
@@ -57,7 +57,7 @@ C055,Meridian Travel,Tour Operator,United Kingdom,,45,45000,D,Aisha Rasheed,acco
 C056,Lighthouse Escapes,Tour Operator,Russia,,30,30000,A,Mohamed Shifan,accounts@lighthouseescapes.example,2022-06-19
 C057,Seabreeze Tours,Tour Operator,India,,60,125000,B,Priya Fernando,accounts@seabreezetours.example,2018-02-10
 C058,Paradise Path Escapes,Tour Operator,China,,45,110000,A,Mohamed Shifan,accounts@paradisepathescapes.example,2020-05-15
-C059,Blue Horizon Escapes,Tour Operator,France,,30,50000,D,Priya Fernando,accounts@bluehorizonescapes.example,2019-09-11
+C059,Blue Horizon Escapes,Tour Operator,France,,30,50000,C,Priya Fernando,accounts@bluehorizonescapes.example,2019-09-11
 C060,Wanderlust Holidays,Tour Operator,Switzerland,,30,160000,B,Priya Fernando,accounts@wanderlustholidays.example,2017-07-09
 C061,Equator Tours,Tour Operator,United Arab Emirates,,30,130000,A,Hana Waheed,accounts@equatortours.example,2024-09-12
 C062,Equator Escapes,Tour Operator,Switzerland,,60,85000,A,Priya Fernando,accounts@equatorescapes.example,2023-08-30
@@ -87,7 +87,7 @@ C085,Archipelago Fisheries Pvt Ltd,Corporate,Maldives,,30,20000,D,Ibrahim Naseem
 C086,Equatorial Holdings Pvt Ltd,Corporate,Maldives,,30,25000,C,Aisha Rasheed,accounts@equatorialholdingspvtltd.example,2020-07-01
 C087,Atoll Logistics Pvt Ltd,Corporate,Maldives,,30,25000,B,Mohamed Shifan,accounts@atolllogisticspvtltd.example,2018-12-13
 C088,Marine Holdings Pvt Ltd,Corporate,Maldives,,30,25000,B,Hana Waheed,accounts@marineholdingspvtltd.example,2020-06-01
-C089,Indian Ocean Logistics Pvt Ltd,Corporate,Maldives,,30,25000,B,Aisha Rasheed,accounts@indianoceanlogisticspvtl.example,2020-08-06
+C089,Indian Ocean Logistics Pvt Ltd,Corporate,Maldives,,30,25000,A,Aisha Rasheed,accounts@indianoceanlogisticspvtl.example,2020-08-06
 C090,Indian Ocean Fisheries Pvt Ltd,Corporate,Maldives,,30,25000,A,Mohamed Shifan,accounts@indianoceanfisheriespvtl.example,2018-05-31
 C091,MV Star Pearl Cruises,Liveaboard & Yacht,Maldives,South Malé,15,10000,C,Aisha Rasheed,accounts@mvstarpearlcruises.example,2018-09-09
 C092,MV Reef Pearl Liveaboard,Liveaboard & Yacht,Maldives,Noonu,30,10000,C,Hana Waheed,accounts@mvreefpearlliveaboard.example,2020-01-04
